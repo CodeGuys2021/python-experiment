@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  ollama:
+    # https://github.com/jmorganca/ollama/issues/797#issuecomment-1764687661
+    image: ollama/ollama:latest
+    ports:
+      - 11434:11434
+    volumes:
+      - ollama:/root/.ollama
+      - ./Modelfile:/root/Modelfile
+      - ./models:/root/models
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all 
+              capabilities: [ gpu ]
+  # test:
+  #   image: nvidia/cuda:12.3.0-base-ubuntu22.04
+  #   command: nvidia-smi
+  #   deploy:
+  #     resources:
+  #       reservations:
+  #         devices:
+  #           - driver: nvidia
+  #             capabilities: [gpu]
+
+volumes:
+  ollama:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/var/local/volumes/ollama'
+    external: false

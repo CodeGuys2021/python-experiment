@@ -11,3 +11,9 @@ huggingface-cli login
 
 # Using `low_cpu_mem_usage=True` or a `device_map` requires Accelerate
 pip3 install accelerate
+
+# check GPU usage:
+nvidia-smi
+
+# check GPU temperature
+nvidia-smi -l 1 # -l=loop, 1=for each second
