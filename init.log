@@ -1,0 +1,13 @@
+conda create --prefix ./env python=3.11
+conda activate ./env
+
+conda install jupyter pandas numpy matplotlib scikit-learn tqdm
+pip3 install torch torchvision torchaudio
+
+pip3 install --upgrade huggingface_hub
+
+# require token, gen a read token here: https://huggingface.co/settings/tokens
+huggingface-cli login
+
+# Using `low_cpu_mem_usage=True` or a `device_map` requires Accelerate
+pip3 install accelerate
