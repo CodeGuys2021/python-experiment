@@ -38,7 +38,7 @@ curl -X POST http://localhost:11434/api/create -d '{
     "name": "Taiwan-LLM-7B-v2.0.1-chat",
     "path": "/root/Modelfile",
     "modelfile": "FROM /root/models/Taiwan-LLM-7B-v2.0.1-chat/q4_0.bin"
-}'
+}' | jq
 
 # optional
 # "stream": false
@@ -60,7 +60,7 @@ curl -X POST http://localhost:11434/api/generate -d '{
     "model": "Taiwan-LLM-7B-v2.0.1-chat:latest",
     "prompt": "請幫我用 ffmpeg cli 把兩段 mp4 影片組合成一段影片，並詳細說明所有參數的作用",
     "stream": false
-}'
+}' | jq 'del(.context)'
 # for time measurement
 # -o /dev/null -s -w 'Total: %{time_total}s\n'
 
