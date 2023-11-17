@@ -4,6 +4,7 @@ services:
   ollama:
     # https://github.com/jmorganca/ollama/issues/797#issuecomment-1764687661
     image: ollama/ollama:latest
+    restart: always
     ports:
       - 11434:11434
     volumes:
