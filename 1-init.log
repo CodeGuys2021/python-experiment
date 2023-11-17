@@ -6,6 +6,8 @@ pip3 install torch torchvision torchaudio
 
 pip3 install --upgrade huggingface_hub
 
+pip3 install python-dotenv
+
 # require token, gen a read token here: https://huggingface.co/settings/tokens
 huggingface-cli login
 

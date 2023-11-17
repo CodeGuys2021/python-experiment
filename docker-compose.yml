@@ -25,8 +25,8 @@ services:
     restart: always
     env_file:
       - .env.docker
-    # ports:
-    #   - 5432:5432
+    ports:
+      - 5432:5432
     volumes:
       - langchain-vector-store:/var/lib/postgresql/data
     networks:

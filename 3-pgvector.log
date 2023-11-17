@@ -1,0 +1,1 @@
+pip3 install pgvector psycopg2-binary tiktoken
