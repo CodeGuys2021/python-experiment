@@ -31,6 +31,12 @@ services:
       - langchain-vector-store:/var/lib/postgresql/data
     networks:
       - llm_internal
+  # 
+  # docker run -p 15432:80 \
+  #   -e 'PGADMIN_DEFAULT_EMAIL=aoi@yamada.com' \
+  #   -e 'PGADMIN_DEFAULT_PASSWORD=$POSTGRES_PASSWORD' \
+  #   -d dpage/pgadmin4
+  # 
   # test:
   #   image: nvidia/cuda:12.3.0-base-ubuntu22.04
   #   command: nvidia-smi
