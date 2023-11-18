@@ -1,0 +1,19 @@
+### Generate
+POST http://localhost:11434/api/generate HTTP/1.1
+
+{
+    "model": "Taiwan-LLM-13B-v2.0-chat",
+    "prompt": "你是人工智慧助理，以下是用戶和人工智能助理之間的對話。你要對用戶的問題提供有用、安全、詳細和禮貌的回答。</s>\nUSER: 請問如何用 ffmpeg cli 把兩段 mp4 影片組合成一段影片，並詳細說明所有參數的作用</s>\nASSISTANT: 以下是使用 ffmpeg cli 命令行工具將兩個 mp4 影片串接在一起並生成結果輸出影片的方法：\n```css\nffmpeg -i input1.mp4 -i input2.mp4 -filter_complex \" [0:v] scale=1280*720 [bg]; [1:v] scale=1280*720 [front]; [bg][front] overlay=x=10:y=10 [out]\" -map \"[out]\" -c:a copy output.mp4\n```\n在這個命令中，我們首先使用 \"-i\" 選項加載輸入影片（input1.mp4 和 input2.mp4）。然後，我們使用 \"-filter_complex\" 選項應用一個複雜的濾鏡以串接輸入影片。\n\n該濾鏡由三部分組成：[0:v]、[1:v] 和 [bg][front] overlay=x=10:y=10。\"[0:v]\" 指的是第一個輸入影片（input1.mp4），而 \"[1:v]\" 指的是第二個輸入影片（input2.mp4）。\n\n接下來，我們使用 \"scale=1280*720\" 濾鏡將兩個輸入影片的解析度調整為共同的 1280x720。然後，我們使用 \"overlay=x=10:y=10\" 濾鏡將第二個影片（input2.mp4）放在第一個影片（input1.mp4）的前面。\n\n我們使用 \" [bg][front] overlay=x=10:y=10 [out]\" 命令來指定輸出影片（output.mp4），並使用 \"-map\" 選項確保只包含輸出影片的音頻。最後，我們使用 \"-c:a copy\" 選項將原始音頻流用於輸出影片。\n\n讓我解釋一下命令中每個參數的作用：\n* \"-i input1.mp4\" 和 \"-i input2.mp4\"：加載輸入影片。\n* \"-filter_complex \" [0:v] scale=1280*720 [bg]; [1:v] scale=1280*720 [front]; [bg][front] overlay=x=10:y=10 [out]\"：應用一個複雜的濾鏡以串接輸入影片。\n* \"-map \"[out]\"\": 指定輸出影片（output.mp4），並使用 \"-c:a copy\" 選項將原始音頻流用於輸出影片。</s>\nUSER: 為甚麼你給出的 cmd 是 css 而不是 bash?</s>\nASSISTANT: 我提供了一個 CSS 命令，因為 ffmpeg 是一個命令行工具，可以在任何 shell（包括 bash）中運行。\n\nCSS 是用於格式化文本的語言，我使用了它來清晰地書寫和格式化命令，使其更容易閱讀和理解。\n\n你可以在任何 shell中運行 CSS 命令，只需複製和粘貼到控制台中，或者將其保存到文件中並使用 \"sh\" 命令運行。\n\n例如，在 bash shell 中，你可以這樣運行命令：\n```css\nsh -c 'ffmpeg -i input1.mp4 -i input2.mp4 -filter_complex \" [0:v] scale=1280*720 [bg]; [1:v] scale=1280*720 [front]; [bg][front] overlay=x=10:y=10 [out]\" -map \"[out]\" -c:a copy output.mp4'\n```\n如果你不熟悉這種方法，或者想使用更簡單的 shell 來運行命令，你可以在任何純文本編輯器中打開 CSS 代碼，將每行替換為相同的命令，但使用回車符作為分隔符（例如，`\\\\n`），然後保存文件並使用你喜歡的 shell 來運行它。\n```css\nffmpeg -i input1.mp4 -i input2.mp4 -filter_complex \" [0:v] scale=1280*720 [bg]; [1:v] scale=1280*720 [front]; [bg][front] overlay=x=10:y=10 [out]\" -map \"[out]\" -c:a copy output.mp4\n```\n請注意，在這種情況下，我使用了 `\\` 字符作為 shell 中分隔符的反斜線，因為它被解釋為一個文本字符而不是一個命令分隔符。如果你選擇在自己的 shell 中使用 `\\n` 作為分隔符，請記住，當你嘗試在控制台中運行該文件時，你需要替換所有 `\\` 字符為一個回車符。</s>USER: cli 明顯不是 css, css 是用在 html 中控制樣式的吧？給我謝罪\nASSISTANT: ",
+    "temperature": 0,
+    "stream": false
+}
+
+### List all models
+GET http://localhost:11434/api/tags HTTP/1.1
+
+### Delete Model
+DELETE http://localhost:11434/api/delete HTTP/1.1
+
+{
+    "name": "Taiwan-LLM-13B-v2.0-chat"
+}

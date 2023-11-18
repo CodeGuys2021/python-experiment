@@ -35,9 +35,9 @@ docker compose up -d
 
 # Create model
 curl -X POST http://localhost:11434/api/create -d '{
-    "name": "Taiwan-LLM-7B-v2.0.1-chat",
+    "name": "Taiwan-LLM-13B-v2.0-chat",
     "path": "/root/Modelfile",
-    "modelfile": "FROM /root/models/Taiwan-LLM-7B-v2.0.1-chat/q4_0.bin"
+    "modelfile": "FROM /root/models/Taiwan-LLM-13B-v2.0-chat/q4_0.bin"
 }' | jq
 
 # optional
@@ -84,3 +84,8 @@ Fri Nov 17 06:51:46 2023
 |                                         |                      |                  N/A |
 +-----------------------------------------+----------------------+----------------------+
 ```
+
+# Delete model
+curl -X DELETE http://localhost:11434/api/delete -d '{
+    "name": "Taiwan-LLM-7B-v2.0.1-chat:latest"
+}' | jq

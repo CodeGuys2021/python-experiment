@@ -1,1 +1,1 @@
-FROM /root/models/Taiwan-LLM-7B-v2.0.1-chat/q4_0.bin
+FROM /root/models/Taiwan-LLM-13B-v2.0-chat/q4_0.bin
