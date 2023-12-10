@@ -17,3 +17,12 @@ DELETE http://localhost:11434/api/delete HTTP/1.1
 {
     "name": "Taiwan-LLM-13B-v2.0-chat"
 }
+
+### Generate 2
+POST http://localhost:11434/api/generate HTTP/1.1
+
+{
+    "model": "Taiwan-LLM-13B-v2.0-chat",
+    "prompt": "USER: Help me translate `Did you know you can use tildes instead of backticks for code in markdown? ✨` into Chinese\nASSISTANT: ",
+    "stream": false
+}

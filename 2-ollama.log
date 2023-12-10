@@ -36,28 +36,28 @@ docker compose up -d
 # Create model
 curl -X POST http://localhost:11434/api/create -d '{
     "name": "Taiwan-LLM-13B-v2.0-chat",
-    "path": "/root/Modelfile",
     "modelfile": "FROM /root/models/Taiwan-LLM-13B-v2.0-chat/q4_0.bin"
 }' | jq
 
-# optional
-# "stream": false
-
-# path is deprecated but required, wtf?
-# https://github.com/jmorganca/ollama/blob/main/docs/api.md#parameters-1
+## optional
+"stream": false
 
 # List local models
 curl http://localhost:11434/api/tags | jq
 
+curl -X DELETE http://localhost:11434/api/delete -d '{
+    "name": "Taiwan-LLM-13B-v2.0-chat"
+}'
+
 # Generate (stream)
 curl -X POST http://localhost:11434/api/generate -d '{
-    "model": "Taiwan-LLM-7B-v2.0.1-chat:latest",
-    "prompt": "請幫我用 ffmpeg cli 把兩段 mp4 影片組合成一段影片，並詳細說明 params 的作用",
+    "model": "Taiwan-LLM-13B-v2.0-chat",
+    "prompt": "請幫我用 ffmpeg cli 把兩段 mp4 影片組合成一段影片，並詳細說明 params 的作用"
 }'
 
 # Generate (no stream)
 curl -X POST http://localhost:11434/api/generate -d '{
-    "model": "Taiwan-LLM-7B-v2.0.1-chat:latest",
+    "model": "Taiwan-LLM-13B-v2.0-chat",
     "prompt": "請幫我用 ffmpeg cli 把兩段 mp4 影片組合成一段影片，並詳細說明所有參數的作用",
     "stream": false
 }' | jq 'del(.context)'
@@ -87,5 +87,5 @@ Fri Nov 17 06:51:46 2023
 
 # Delete model
 curl -X DELETE http://localhost:11434/api/delete -d '{
-    "name": "Taiwan-LLM-7B-v2.0.1-chat:latest"
+    "name": "Taiwan-LLM-13B-v2.0-chat"
 }' | jq

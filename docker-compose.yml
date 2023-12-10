@@ -9,7 +9,6 @@ services:
       - 11434:11434
     volumes:
       - ollama:/root/.ollama
-      - ./Modelfile:/root/Modelfile
       - ./models:/root/models
     networks:
       - llm_internal
